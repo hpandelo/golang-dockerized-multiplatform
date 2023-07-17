@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  golang-app:
+    build:
+      context: .
+      target: client
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    entrypoint: ["app-dev"]
+    container_name: golang-app
+    restart: always
+    ports:
+      - 127.0.0.1:8080:8080
+    environment:
+      - SERVER_PORT=8080
